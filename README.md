@@ -11,22 +11,7 @@
 
 ## 프로젝트 구조
 
-src/main/java/com/example/oauthlogin/
-├── config/
-│ └── SecurityConfig.java
-├── controller/
-│ └── UserController.java
-├── dto/
-│ └── SignupRequestDto.java
-├── entity/
-│ └── User.java
-├── oauth2/
-│ └── OAuthAttributes.java
-├── repository/
-│ └── UserRepository.java
-├── service/
-│ └── UserService.java
-└── OauthLoginApplication.java
+
 
 
 ### 패키지 설명
