@@ -50,11 +50,6 @@ public class WebSecurityConfig {
     }
 
 
-    @Bean
-    public UserVerificationFilter userVerificationFilter() {
-        return new UserVerificationFilter(objectMapper);
-    }
-
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -71,7 +66,6 @@ public class WebSecurityConfig {
 
         http.addFilterBefore(jwtAuthorizationFilter(), JwtAuthenticationFilter.class);
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
-        http.addFilterBefore(userVerificationFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 }
