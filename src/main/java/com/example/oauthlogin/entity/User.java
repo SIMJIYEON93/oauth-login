@@ -1,6 +1,7 @@
 package com.example.oauthlogin.entity;
 
 import com.example.oauthlogin.dto.SignupRequestDto;
+import com.example.oauthlogin.oauth2.OAuthAttributes;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -33,6 +34,13 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private UserStatusEnum status;
 
+    @Column
+    private Boolean needSocialSignup = true;
+
+    public User update(String username) {
+        this.username = username;
+        return this;
+    }
 
     public User(SignupRequestDto requestDto, String encodedPassword) {
         this.username=requestDto.getUsername();
@@ -40,5 +48,14 @@ public class User {
         this.password = encodedPassword;
         this.role = UserRoleEnum.USER;
         this.status = UserStatusEnum.ACTIVE;
+    }
+
+    public User(OAuthAttributes attributes) {
+        this.username = attributes.getName();
+        this.email = attributes.getEmail();
+        this.password = "";
+        this.role = UserRoleEnum.USER;
+        this.status = UserStatusEnum.ACTIVE;
+        this.needSocialSignup = false;
     }
 }

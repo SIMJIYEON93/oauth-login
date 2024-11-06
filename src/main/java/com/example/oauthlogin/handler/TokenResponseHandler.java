@@ -27,11 +27,26 @@ public class TokenResponseHandler {
     }
 
 
+    public void addTokensToResponseForSocialLogin(User user, HttpServletResponse response) {
+        String accessToken = jwtUtil.createAccessToken(user.getEmail(), user.getRole());
+        String refreshToken = jwtUtil.createRefreshToken();
+
+        addAccessTokenToCookie(accessToken, response);
+        addRefreshTokenToCookie(refreshToken, response);
+
+        refreshTokenRepository.save(new RefreshToken(refreshToken, user.getId()));
+    }
 
     private void addAccessTokenToHeader(String accessToken, HttpServletResponse response) {
         response.addHeader(JwtUtil.AUTHORIZATION_HEADER, JwtUtil.BEARER_PREFIX + accessToken);
     }
 
+    private void addAccessTokenToCookie(String accessToken, HttpServletResponse response) {
+        Cookie cookie = new Cookie("accessToken", accessToken);
+        cookie.setPath("/");
+        cookie.setMaxAge((int) JwtUtil.ACCESS_TOKEN_TIME / 1000);
+        response.addCookie(cookie);
+    }
 
     private void addRefreshTokenToCookie(String refreshToken, HttpServletResponse response) {
         Cookie cookie = new Cookie("refreshToken", refreshToken);

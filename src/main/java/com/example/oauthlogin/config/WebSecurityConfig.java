@@ -1,6 +1,8 @@
 package com.example.oauthlogin.config;
 
 import com.example.oauthlogin.handler.TokenResponseHandler;
+import com.example.oauthlogin.oauth2.CustomOAuth2UserService;
+import com.example.oauthlogin.oauth2.OAuth2SuccessHandler;
 import com.example.oauthlogin.security.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +17,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
@@ -24,6 +27,7 @@ public class WebSecurityConfig {
     private final JwtUtil jwtUtil;
     private final ObjectMapper objectMapper;
     private final UserDetailsServiceImpl userDetailsService;
+    private final CustomOAuth2UserService customOAuth2UserService;
     private final TokenResponseHandler tokenResponseHandler;
     private final AuthenticationConfiguration authenticationConfiguration;
 
@@ -47,6 +51,11 @@ public class WebSecurityConfig {
     @Bean
     public JwtAuthorizationFilter jwtAuthorizationFilter() {
         return new JwtAuthorizationFilter(jwtUtil, objectMapper, userDetailsService);
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+        return new OAuth2SuccessHandler(tokenResponseHandler);
     }
 
 
