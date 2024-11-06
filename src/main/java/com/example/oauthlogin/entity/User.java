@@ -7,6 +7,8 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 @Entity
 @Getter
 @Table(name = "users")
@@ -25,6 +27,9 @@ public class User {
 
     @Column(nullable = false, unique = true)
     private String email;
+
+    @Column
+    private String nickname;
 
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
@@ -51,11 +56,12 @@ public class User {
     }
 
     public User(OAuthAttributes attributes) {
-        this.username = attributes.getName();
         this.email = attributes.getEmail();
-        this.password = "";
+        this.password = UUID.randomUUID().toString();
+        this.nickname = attributes.getName();
+        this.needSocialSignup = true;
         this.role = UserRoleEnum.USER;
         this.status = UserStatusEnum.ACTIVE;
-        this.needSocialSignup = false;
     }
+
 }
