@@ -1,8 +1,6 @@
 package com.example.oauthlogin.controller;
 
-import com.example.oauthlogin.dto.ApiResponseDto;
-import com.example.oauthlogin.dto.LoginRequestDto;
-import com.example.oauthlogin.dto.SignupRequestDto;
+import com.example.oauthlogin.dto.*;
 import com.example.oauthlogin.service.UserServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,5 +25,18 @@ public class UserController {
         return ResponseEntity.ok(new ApiResponseDto("회원가입 성공", HttpStatus.OK.value()));
     }
 
+    @PostMapping("/auth/reissue")
+    public ResponseEntity<ApiResponseDto> reissueToken(@Valid @RequestBody ReissueRequestDto requestDto,
+                                                       HttpServletResponse response) {
+        userService.reissueToken(requestDto, response);
+        return ResponseEntity.ok(new ApiResponseDto("토큰 재발급 성공", HttpStatus.OK.value()));
+    }
+
+    @PostMapping("/auth/logout")
+    public ResponseEntity<ApiResponseDto> logout(@Valid @RequestBody LogoutRequestDto requestDto,
+                                                 HttpServletRequest request) {
+        userService.logout(requestDto, request);
+        return ResponseEntity.ok(new ApiResponseDto("로그아웃 성공", HttpStatus.OK.value()));
+    }
 
 }
