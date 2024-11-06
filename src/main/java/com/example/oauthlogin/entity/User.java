@@ -17,7 +17,7 @@ public class User {
     private Long id;
 
     @Column
-    private String nickname;
+    private String username;
 
     @Column(nullable = false)
     private String password;
@@ -34,9 +34,10 @@ public class User {
     private UserStatusEnum status;
 
 
-    public User(SignupRequestDto requestDto) {
+    public User(SignupRequestDto requestDto, String encodedPassword) {
+        this.username=requestDto.getUsername();
         this.email = requestDto.getEmail();
-        this.password = requestDto.getPassword();
+        this.password = encodedPassword;
         this.role = UserRoleEnum.USER;
         this.status = UserStatusEnum.ACTIVE;
     }

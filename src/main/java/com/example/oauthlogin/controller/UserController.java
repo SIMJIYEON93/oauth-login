@@ -1,6 +1,7 @@
 package com.example.oauthlogin.controller;
 
 import com.example.oauthlogin.dto.ApiResponseDto;
+import com.example.oauthlogin.dto.LoginRequestDto;
 import com.example.oauthlogin.dto.SignupRequestDto;
 import com.example.oauthlogin.service.UserServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
@@ -25,5 +26,6 @@ public class UserController {
         userService.signup(requestDto);
         return ResponseEntity.ok(new ApiResponseDto("회원가입 성공", HttpStatus.OK.value()));
     }
+
 
 }
