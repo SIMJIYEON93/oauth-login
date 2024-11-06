@@ -10,6 +10,7 @@ public enum ErrorCode {
     DUPLICATED_EMAIL(HttpStatus.BAD_REQUEST, "U002", "이미 가입된 이메일입니다."),
     PASSWORD_NOT_MATCHED(HttpStatus.BAD_REQUEST, "U005", "비밀번호가 일치하지 않습니다."),
 
+    //auth
     EXPIRED_TOKEN(HttpStatus.UNAUTHORIZED, "AU001", "만료된 토큰입니다."),
     INVALID_TOKEN(HttpStatus.UNAUTHORIZED, "AU002", "유효하지 않은 토큰입니다."),
     BLACKLISTED_TOKEN(HttpStatus.UNAUTHORIZED, "AU003", "블랙리스트에 등록된 토큰입니다."),
