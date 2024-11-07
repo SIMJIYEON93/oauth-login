@@ -13,7 +13,7 @@ public class OAuthAttributes {
     private String name;
     private String email;
 
-    public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
+    public static OAuthAttributes of(String registrationId, Map<String, Object> attributes) {
         if ("naver".equals(registrationId)) {
             return ofNaver("id", attributes);
         }

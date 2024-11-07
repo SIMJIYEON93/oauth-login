@@ -19,16 +19,16 @@ import java.util.Map;
 public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
     private final TokenResponseHandler tokenResponseHandler;
 
-    @Value("${front.server.url}")
-    private String frontUrl;
-
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
-        Map<String, Object> attributes = ((OAuth2User) authentication.getPrincipal()).getAttributes();
+        OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
+        Map<String, Object> attributes = oAuth2User.getAttributes();
         User user = (User) attributes.get("storedUser");
 
         tokenResponseHandler.addTokensToResponseForSocialLogin(user, response);
 
-        response.sendRedirect(frontUrl + "/oauth2/redirect");
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write("{\"message\":\"OAuth2 로그인 성공\",\"userId\":\"" + user.getId() + "\"}");
+        response.setStatus(HttpServletResponse.SC_OK);
     }
 }

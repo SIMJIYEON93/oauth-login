@@ -20,16 +20,13 @@ public class User {
     private Long id;
 
     @Column
-    private String username;
+    private String nickname;
 
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false, unique = true)
     private String email;
-
-    @Column
-    private String nickname;
 
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
@@ -42,13 +39,13 @@ public class User {
     @Column
     private Boolean needSocialSignup = true;
 
-    public User update(String username) {
-        this.username = username;
+    public User update(String nickname) {
+        this.nickname = nickname;
         return this;
     }
 
     public User(SignupRequestDto requestDto, String encodedPassword) {
-        this.username=requestDto.getUsername();
+        this.nickname=requestDto.getNickname();
         this.email = requestDto.getEmail();
         this.password = encodedPassword;
         this.role = UserRoleEnum.USER;
