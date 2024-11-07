@@ -27,8 +27,11 @@ public class JwtUtil {
     public static final String AUTHORIZATION_HEADER = "Authorization";
     public static final String AUTHORIZATION_KEY = "auth";
     public static final String BEARER_PREFIX = "Bearer ";
-    public static final long ACCESS_TOKEN_TIME = 60 * 60 * 1000L * 3; // 3시간
-    public static final long REFRESH_TOKEN_TIME = 60 * 60 * 1000L * 24 * 3; // 3일
+   /* 테스트
+     public static final long ACCESS_TOKEN_TIME = 10 * 1000L; // 10초 */
+
+    public static final long ACCESS_TOKEN_TIME = 60 * 60 * 1000L * 3;
+    public static final long REFRESH_TOKEN_TIME = 60 * 60 * 1000L * 24 * 3;
 
     @Value("${jwt.secretkey}")
     private String secretKey;
@@ -67,6 +70,8 @@ public class JwtUtil {
 
     public String createRefreshToken() {
         Date now = new Date();
+
+        log.info("Refresh Token 발급 성공");
 
         return Jwts.builder()
                 .setClaims(Jwts.claims())
