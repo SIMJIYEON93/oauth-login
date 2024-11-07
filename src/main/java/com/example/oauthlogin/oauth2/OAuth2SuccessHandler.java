@@ -19,6 +19,9 @@ import java.util.Map;
 public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
     private final TokenResponseHandler tokenResponseHandler;
 
+    @Value("${oauth2.redirect.url}")
+    private String redirectUrl;
+    
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
@@ -26,6 +29,12 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
         User user = (User) attributes.get("storedUser");
 
         tokenResponseHandler.addTokensToResponseForSocialLogin(user, response);
+
+        // 토큰 정보를 쿼리 파라미터로 추가
+        String redirectUrlWithToken = redirectUrl + "?userId=" + user.getId();
+
+        // 리다이렉트
+        response.sendRedirect(redirectUrlWithToken);
 
         response.setContentType("application/json;charset=UTF-8");
         response.getWriter().write("{\"message\":\"OAuth2 로그인 성공\",\"userId\":\"" + user.getId() + "\"}");
