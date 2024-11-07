@@ -30,8 +30,8 @@ public class JwtUtil {
    /* 테스트
      public static final long ACCESS_TOKEN_TIME = 10 * 1000L; // 10초 */
 
-    public static final long ACCESS_TOKEN_TIME = 60 * 60 * 1000L * 3;
-    public static final long REFRESH_TOKEN_TIME = 60 * 60 * 1000L * 24 * 3;
+    public static final long ACCESS_TOKEN_TIME = 30 * 60 * 1000L;
+    public static final long REFRESH_TOKEN_TIME = 7 * 24 * 60 * 60 * 1000L;
 
     @Value("${jwt.secretkey}")
     private String secretKey;
