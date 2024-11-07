@@ -1,7 +1,7 @@
 package com.example.oauthlogin.oauth2;
 
 import com.example.oauthlogin.entity.User;
-import com.example.oauthlogin.handler.TokenResponseHandler;
+import com.example.oauthlogin.security.TokenResponseHandler;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

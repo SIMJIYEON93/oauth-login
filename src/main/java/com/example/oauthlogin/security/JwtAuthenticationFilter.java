@@ -3,7 +3,6 @@ package com.example.oauthlogin.security;
 import com.example.oauthlogin.dto.LoginRequestDto;
 import com.example.oauthlogin.dto.UserResponseDto;
 import com.example.oauthlogin.entity.User;
-import com.example.oauthlogin.handler.TokenResponseHandler;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -16,6 +15,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import java.io.IOException;
+
 
 
 @Slf4j(topic = "로그인 및 JWT 생성")

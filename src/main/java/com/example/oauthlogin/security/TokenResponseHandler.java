@@ -1,4 +1,4 @@
-package com.example.oauthlogin.handler;
+package com.example.oauthlogin.security;
 
 import com.example.oauthlogin.entity.RefreshToken;
 import com.example.oauthlogin.entity.User;
