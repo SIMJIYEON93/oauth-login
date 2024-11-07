@@ -1,6 +1,6 @@
 # OAuth Login Project
 
-이 프로젝트는 JWT토큰 기반 Spring Security와 OAuth2.0을 적용한 토이 프로젝트 입니다.
+이 프로젝트는 JWT토큰으로 Spring Security와 OAuth2.0을 적용한 로그인 기능 소스 코드입니다.
 
 ![Spring](https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot)
 ![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white)
