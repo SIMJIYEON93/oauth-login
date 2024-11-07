@@ -39,10 +39,6 @@ public class User {
     @Column
     private Boolean needSocialSignup = true;
 
-    public User update(String nickname) {
-        this.nickname = nickname;
-        return this;
-    }
 
     public User(SignupRequestDto requestDto, String encodedPassword) {
         this.nickname=requestDto.getNickname();
@@ -59,6 +55,11 @@ public class User {
         this.needSocialSignup = true;
         this.role = UserRoleEnum.USER;
         this.status = UserStatusEnum.ACTIVE;
+    }
+
+    public User update(String nickname) {
+        this.nickname = nickname;
+        return this;
     }
 
 }
