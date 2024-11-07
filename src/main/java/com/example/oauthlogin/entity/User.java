@@ -32,9 +32,6 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private UserRoleEnum role;
 
-    @Column
-    @Enumerated(value = EnumType.STRING)
-    private UserStatusEnum status;
 
     @Column
     private Boolean needSocialSignup = true;
@@ -45,7 +42,6 @@ public class User {
         this.email = requestDto.getEmail();
         this.password = encodedPassword;
         this.role = UserRoleEnum.USER;
-        this.status = UserStatusEnum.ACTIVE;
     }
 
     public User(OAuthAttributes attributes) {
@@ -54,7 +50,6 @@ public class User {
         this.nickname = attributes.getName();
         this.needSocialSignup = true;
         this.role = UserRoleEnum.USER;
-        this.status = UserStatusEnum.ACTIVE;
     }
 
     public User update(String nickname) {
