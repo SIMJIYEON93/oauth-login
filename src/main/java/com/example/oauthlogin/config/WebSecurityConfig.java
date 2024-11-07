@@ -1,6 +1,6 @@
 package com.example.oauthlogin.config;
 
-import com.example.oauthlogin.handler.TokenResponseHandler;
+import com.example.oauthlogin.security.TokenResponseHandler;
 import com.example.oauthlogin.oauth2.CustomOAuth2UserService;
 import com.example.oauthlogin.oauth2.OAuth2SuccessHandler;
 import com.example.oauthlogin.security.*;

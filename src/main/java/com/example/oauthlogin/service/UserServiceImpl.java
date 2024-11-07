@@ -8,7 +8,7 @@ import com.example.oauthlogin.entity.RefreshToken;
 import com.example.oauthlogin.entity.User;
 import com.example.oauthlogin.exception.CustomException;
 import com.example.oauthlogin.exception.ErrorCode;
-import com.example.oauthlogin.handler.TokenResponseHandler;
+import com.example.oauthlogin.security.TokenResponseHandler;
 import com.example.oauthlogin.repository.BlacklistedTokenRepository;
 import com.example.oauthlogin.repository.RefreshTokenRepository;
 import com.example.oauthlogin.repository.UserRepository;
