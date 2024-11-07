@@ -10,8 +10,8 @@ import lombok.Setter;
 @Setter
 public class SignupRequestDto {
 
-    @NotBlank(message = "이름을 입력해주세요.")
-    private String username;
+    @NotBlank(message = "별명을 입력해주세요.")
+    private String nickname;
 
     @NotBlank(message = "이메일을 입력해주세요.")
     @Email(message = "이메일 형식에 맞게 입력해주세요.")

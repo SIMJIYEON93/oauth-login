@@ -70,7 +70,6 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     private void validateToken(String token) {
         if (!jwtUtil.isValidToken(token)) {
             throw new CustomException(ErrorCode.INVALID_TOKEN);
