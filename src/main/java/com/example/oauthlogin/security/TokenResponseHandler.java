@@ -3,7 +3,6 @@ package com.example.oauthlogin.security;
 import com.example.oauthlogin.entity.RefreshToken;
 import com.example.oauthlogin.entity.User;
 import com.example.oauthlogin.repository.RefreshTokenRepository;
-import com.example.oauthlogin.security.JwtUtil;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
