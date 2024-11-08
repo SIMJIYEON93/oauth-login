@@ -3,7 +3,6 @@ package com.example.oauthlogin.service;
 import com.example.oauthlogin.dto.LogoutRequestDto;
 import com.example.oauthlogin.dto.ReissueRequestDto;
 import com.example.oauthlogin.dto.SignupRequestDto;
-import com.example.oauthlogin.entity.User;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,6 @@
 package com.example.oauthlogin.controller;
 
 import com.example.oauthlogin.dto.*;
-import com.example.oauthlogin.security.UserDetailsImpl;
 import com.example.oauthlogin.service.UserServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -9,7 +8,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

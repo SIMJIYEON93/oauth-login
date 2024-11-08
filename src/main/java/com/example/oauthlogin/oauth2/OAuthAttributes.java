@@ -15,20 +15,15 @@ public class OAuthAttributes {
 
     public static OAuthAttributes of(String registrationId, Map<String, Object> attributes) {
         if ("naver".equals(registrationId)) {
-            return ofNaver("id", attributes);
+            Map<String, Object> response = (Map<String, Object>) attributes.get("response");
+
+            return OAuthAttributes.builder()
+                    .name((String) response.get("nickname"))
+                    .email((String) response.get("email"))
+                    .attributes(response)
+                    .nameAttributeKey("id")
+                    .build();
         }
         throw new IllegalArgumentException("Unsupported registration ID");
-    }
-
-
-    private static OAuthAttributes ofNaver(String userNameAttributeName, Map<String, Object> attributes) {
-        Map<String, Object> response = (Map<String, Object>) attributes.get("response");
-
-        return OAuthAttributes.builder()
-                .name((String) response.get("nickname"))
-                .email((String) response.get("email"))
-                .attributes(response)
-                .nameAttributeKey(userNameAttributeName)
-                .build();
     }
 }
